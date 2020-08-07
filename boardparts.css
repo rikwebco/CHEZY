@@ -1,0 +1,19 @@
+#heading {
+    display: flex;
+    justify-content: space-between;
+}
+#btnCheeseCall {
+    order: 1;
+    padding: 18px;
+    border-radius: 14px;
+    background-color: goldenrod;
+    font-size: 1.4rem;
+    border: 3px solid blueviolet
+}
+#btnSetCard {
+    visibility: hidden;
+    order: 3;
+}
+.call-um {
+    background-color: goldenrod;
+}
