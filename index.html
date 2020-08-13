@@ -29,6 +29,7 @@
             <h3></h3>
         </div>
         <div class="outer-box">
+    
             <div class="inner-column">
                 <div class="call-um">
                     C
@@ -93,6 +94,15 @@
         </div>
     </div>
     <script src="data/the_lists.js"></script>
+    <script>   
+        function buildElem(el, idz, cName){
+            let newEl = document.createElement(el);
+            newEl.id = idz;
+            newEl.className = cName;           
+            return newEl;
+        }
+                
+    </script>
 </body>
 
 </html>
