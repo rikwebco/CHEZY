@@ -2,114 +2,105 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/style.css" type="text/css">
-    <link rel="stylesheet" href="css/boardparts.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
+  <link rel="stylesheet" href="css/boardparts.css" />
 </head>
 
 <body>
-    <div id="gameWrapper">
+  <div id="game-wrapper">
+    <header id="header">
+      <div id="lastCall">
+        <label for="last-called-list">LAST CALLED: </label>
+        <br />
+        <select id="last-called-list">
+          <option>C - Provolone</option>
+        </select>
+      </div>
+      <div id="call">
+        <button type="button" value="RESET GAME" class="no-print" id="btnCheeseCall">
+          CALL CHEESE
+        </button>
+      </div>
+      <div id="resets">
+        <button type="button" value="RESET CARD" class="no-print" id="btnResetCard">
+          RESET CARD
+        </button>
+        <button type="button" value="RESET GAME" class="no-print" id="btnResetGame">
+          RESET GAME
+        </button>
+      </div>
+    </header>
 
-        <div id="heading">
-
-            <button type="button" value="SET THE CARD" class="no-print" id="btnSetCard">SET THE CARD</button>
-
-            <button type="button" value="CHEESE CALL" class="no-print" id="btnCheeseCall">CALL CHEESE</button>
-
-            <div id="callerSpace">
-            </div>
-            <div id="currentCheese">
-                <h3></h3>
-            </div>
-        </div>
-        <div id="currentCheese">
-            <h3></h3>
-        </div>
-        <div class="outer-box">
-            <script>
-                function x(){
-                    let innerColumn = buildElem('div', '', 'inner-column');
-                    console.log(innerColumn);
-                }
-
-            </script>
-    
-            <div class="inner-column">
-                <div class="call-um">
-                    C
-                </div>
-                <div class="cheese-box c-col" id="C1"></div>
-                <div class="cheese-box c-col" id="C2"></div>
-                <div class="cheese-box c-col" id="C3"></div>
-                <div class="cheese-box c-col" id="C4"></div>
-                <div class="cheese-box c-col" id="C5"></div>
-            </div>
-            <div class="inner-column">
-                <div class="call-um">
-                    H
-                </div>
-                <div class="cheese-box h-col" id="H1"></div>
-                <div class="cheese-box h-col" id="H2"></div>
-                <div class="cheese-box h-col" id="H3"></div>
-                <div class="cheese-box h-col" id="H4"></div>
-                <div class="cheese-box h-col" id="H5"></div>
-            </div>
-            <div class="inner-column">
-                <div class="call-um">
-                    E
-                </div>
-                <div class="cheese-box e-col" id="E1"></div>
-                <div class="cheese-box e-col" id="E2"></div>
-                <div class="cheese-box e-col" id="E3"></div>
-                <div class="cheese-box e-col" id="E4"></div>
-                <div class="cheese-box e-col" id="E5"></div>
-            </div>
-            <div class="inner-column">
-                <div class="call-um">
-                    Z
-                </div>
-                <div class="cheese-box z-col" id="Z1"></div>
-                <div class="cheese-box z-col" id="Z2"></div>
-                <div class="cheese-box z-col" id="Z3"></div>
-                <div class="cheese-box z-col" id="Z4"></div>
-                <div class="cheese-box z-col" id="Z5"></div>
-            </div>
-            <div class="inner-column">
-                <div class="call-um">
-                    Y
-                </div>
-                <div class="cheese-box y-col" id="Y1"></div>
-                <div class="cheese-box y-col" id="Y2"></div>
-                <div class="cheese-box y-col" id="Y3"></div>
-                <div class="cheese-box y-col" id="Y4"></div>
-                <div class="cheese-box y-col" id="Y5"></div>
-            </div>
-
-        </div>
-        <div class="game-card-footer">
-            <br><br>
-            <hr>
-            <button type="button" value="RESET GAME" class="no-print" id="btnGameReset">RESET GAME</button>
-            <button type="button" value="PRINT THE CARD" class="no-print" id="btnPrintCard">PRINT THE CARD</button>
-            <small>© 2019 rikwebmedia</small>
-        </div>
-        <div class="list-called">
-            <ul id="calledList"></ul>
-        </div>
+    <div id="cardbox">
+      <div id="card"></div>
     </div>
-    <script src="data/the_lists.js"></script>
-    <script>   
-        function buildElem(el, idz, cName){
-            let newEl = document.createElement(el);
-            newEl.id = idz;
-            newEl.className = cName;           
-            return newEl;
-        }
-                
-    </script>
+
+    <footer id="footer">
+      <div id="FooterA"></div>
+      <div id="FooterB"></div>
+      <div id="FooterC"></div>
+    </footer>
+  </div>
+  <!-- END #game-wrapper -->
+
+  <script src="classes/GameData.js"></script>
+  <script src="data/the_lists.js"></script>
+  <script src="index.js"></script>
+
+  <script>
+    console.log(_CHEZY);
+    let header = document.getElementById("header");
+    let footer = document.getElementById("footer");
+    let cardReset = document.getElementById('btnResetCard');
+
+    const resets = document.getElementById("resets");
+    window.onload = function () {
+      setButtonDisplay();
+      setCurrentList.bind(_CHEZY);
+      setCardLists.bind(_CHEZY);
+    };
+
+    function setButtonDisplay() {
+      if (window.innerWidth <= 800) {
+        console.log(header);
+        let r = header.children[2];
+        header.removeChild(r);
+        footer.appendChild(r);
+      }
+    }
+
+    function setCurrentList(){
+      if(localStorage.currentList === undefined){
+        this.currentList = this.callList();
+        localStorage.currentList = JSON.stringify(this.currentList);
+      }      
+    }
+
+    function setCardLists(){
+      if(localStorage.currentCard === undefined){
+        this.currentCard = this.fivePacks();
+        localStorage.currentCard = JSON.stringify(this.currentCard);
+      }
+    }
+
+    function resetCard(){
+      console.log('reset start');
+      this.currentCard = this.fivePacks();
+      localStorage.currentCard = JSON.stringify(this.currentCard);
+      console.log('reset end');
+    }
+
+
+    // EVENTS 
+    cardReset.addEventListener('click', ()=>{
+      resetCard.bind(_CHEZY);
+    });
+
+  </script>
 </body>
 
 </html>

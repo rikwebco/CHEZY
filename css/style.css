@@ -1,66 +1,94 @@
-html,body {
-    max-width: 1024px;
-    width: 100vw;
-    background-color: black;
-    color: white;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.outer-box {
-    max-width: 100vw;
-    min-width: 350px;
-    max-height: 900px;
-    min-height: 500px;
-    display: flex;
+html,
+body {
+  /* max-width: 1024px; */
+  width: 100vw;
+  background-color: black;
+  color: white;
+}
+
+#game-wrapper {
+  position: relative;
+  max-width: 100vw;
+  overflow-x: hidden;
+  display: grid;
+  grid-template-areas:
+    "HEADER"
+    "CARD"
+    "FOOTER";
+  text-align: center;
+}
+
+/*  HEADER   */
+header {
+  display: grid;
+  grid-template-areas: "HeaderA HeaderB HeaderC";
+}
+
+/*  CARDBOX  */
+#cardbox {
+  min-height: 800px;
+  display: grid;
 
 }
 
-.inner-column {
-    width: 20%;
-    min-height: 500px;
-    border: 1px solid black;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+/*  CARD  */
+#card {
+  display: grid;
+  grid-template-areas:
+    "AH BH CH DH EH"
+    "A1 B1 C1 D1 E1"
+    "A2 B2 C2 D2 E2"
+    "A3 B3 C3 D3 E3"
+    "A4 B4 C4 D4 E4"
+    "A5 B5 C5 D5 E5"
+  ;
 
 }
 
-.call-um {
-    font-size: 3rem;
-    font-weight: bold;
-    height: 16.66%;
-    width: 100%;
-    border-bottom: 1px solid black;
-    text-align: center;
+/* FOOTER */
+footer {
+  min-height: 24px;
+  background: green;
+  display: grid;
+  grid-template-areas: "FooterA FooterB FooterC";
 }
 
-.cheese-box {
-    box-sizing: border-box;
-    border: 1px solid red;
-    height: 16.66%;
-    width: 100%;
-    text-align: center;
+#lastCall {
+  grid-area: HeaderA;
 }
 
-.called {
-    background-color: red;
+#call {
+  grid-area: HeaderB;
 }
 
-
-
-@media (max-width: 600px){
-    html,body {
-    max-width: 1024px;
-    background-color: black;
-    color: white;
+#resets {
+  grid-area: HeaderC;
 }
-    *{
-        font-size: 0.9rem;
-    }
-    
+
+button {
+  padding: 18px;
+  border-radius: 14px;
+  background-color: goldenrod;
+  font-size: 1.4rem;
+  border: 3px solid blueviolet;
 }
-@media (min-width: 601px){
-    *{
-        font-size: 1.3rem;
-    }
+
+@media screen and (max-width: 768px) {
+  #last {
+    grid-area: HeaderA;
+  }
+
+  #call {
+    grid-area: HeaderB;
+  }
+
+  #resets {
+    grid-area: FooterC;
+  }
 }
