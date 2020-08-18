@@ -10,7 +10,8 @@ body, html {
 }
 
 #game-wrapper {
-  background-color: pink; 
+  background-color: black;
+  color: white; 
   display: grid;
   grid-template-columns: 100%;
   grid-template-rows: repeat(3, auto);
@@ -24,7 +25,7 @@ body, html {
   padding: 22px;
 }
 
-#header {
+#game-header {
   grid-area: HEADER;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -38,6 +39,51 @@ body, html {
 
 /* CARD  */
 
-#call-row {
+/* Outermost div. part of index.html */
+#cardbox {
+  max-width: 720px;
+  max-height: 864px;
+
+}
+/* Created dynamically by buildCardStructure(theClass) function */
+#card-outer-container {
+  width: 100%;
+  max-width: 720px;
   display: flex;
+  flex-direction: column;
+}
+#card-header-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: auto;
+  justify-content: space-around;
+ 
+}
+.card-column-label {
+  text-align: center;
+  border: 1px solid black;
+  align-self: center;
+  font-size: 2em;
+}
+#card-content-box {
+  display: grid;
+  grid-template-columns: repeat(5, 16vw);
+  grid-template-rows: repeat(5, 16vw);
+  justify-content: space-around;
+  border: 1px solid black;
+}
+.content-item {
+  padding: 12px 2px;
+  height: 16vw;
+  border: 1px solid red;
+  text-align: center;
+  align-self: center;
+}
+
+
+@media screen and (max-width: 468px){
+  .content-item {
+    font-size: .7em;
+    font-weight: bold;
+  }
 }

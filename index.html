@@ -12,7 +12,7 @@
 
 <body>
   <div id="game-wrapper">
-    <header id="header">
+    <header id="game-header">
       <div id="lastCall">
         <label for="last-called-list">LAST CALLED: </label>
         <br />
@@ -36,16 +36,7 @@
     </header>
 
     <div id="cardbox">
-      <div id="card">
-        <div id="call-row"></div>
-        <div id="call-columns">
-          <div id="colA">1,2,3,4,5</div>
-          <div id="colB">1,2,3,4,5</div>
-          <div id="colC">1,2,3,4,5</div>
-          <div id="colD">1,2,3,4,5</div>
-          <div id="colE">1,2,3,4,5</div>
-        </div>
-      </div>
+     
     </div>
 
     <footer id="footer">
@@ -61,18 +52,21 @@
   <script src="index.js"></script>
 
   <script>
-    let header = document.getElementById("header");
+    let header = document.getElementById("game-header");
     let footer = document.getElementById("footer");
     let cardReset = document.getElementById('btnResetCard');
     let gameReset = document.getElementById('btnResetGame');
 
     const resets = document.getElementById("resets");
     window.onload = init;
-    
+
     function init() {
       setButtonDisplay();
       setCurrentList(_CHEZY);
       setCardLists(_CHEZY);
+      buildCardStructure();
+      setCardHeaderRow(_CHEZY);
+      setCardContent(_CHEZY);
     }
 
     cardReset.addEventListener('click', () => {
