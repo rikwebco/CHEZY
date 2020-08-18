@@ -41,3 +41,9 @@ class GAMEDATA {
 
 
 }
+
+/*
+colHeads: 1 array(5)
+
+
+*/

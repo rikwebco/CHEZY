@@ -36,7 +36,16 @@
     </header>
 
     <div id="cardbox">
-      <div id="card"></div>
+      <div id="card">
+        <div id="call-row"></div>
+        <div id="call-columns">
+          <div id="colA">1,2,3,4,5</div>
+          <div id="colB">1,2,3,4,5</div>
+          <div id="colC">1,2,3,4,5</div>
+          <div id="colD">1,2,3,4,5</div>
+          <div id="colE">1,2,3,4,5</div>
+        </div>
+      </div>
     </div>
 
     <footer id="footer">
@@ -52,54 +61,29 @@
   <script src="index.js"></script>
 
   <script>
-    console.log(_CHEZY);
     let header = document.getElementById("header");
     let footer = document.getElementById("footer");
     let cardReset = document.getElementById('btnResetCard');
+    let gameReset = document.getElementById('btnResetGame');
 
     const resets = document.getElementById("resets");
-    window.onload = function () {
+    window.onload = init;
+    function init() {
       setButtonDisplay();
-      setCurrentList.bind(_CHEZY);
-      setCardLists.bind(_CHEZY);
-    };
-
-    function setButtonDisplay() {
-      if (window.innerWidth <= 800) {
-        console.log(header);
-        let r = header.children[2];
-        header.removeChild(r);
-        footer.appendChild(r);
-      }
+      setCurrentList(_CHEZY);
+      setCardLists(_CHEZY);
     }
 
-    function setCurrentList(){
-      if(localStorage.currentList === undefined){
-        this.currentList = this.callList();
-        localStorage.currentList = JSON.stringify(this.currentList);
-      }      
-    }
-
-    function setCardLists(){
-      if(localStorage.currentCard === undefined){
-        this.currentCard = this.fivePacks();
-        localStorage.currentCard = JSON.stringify(this.currentCard);
-      }
-    }
-
-    function resetCard(){
-      console.log('reset start');
-      this.currentCard = this.fivePacks();
-      localStorage.currentCard = JSON.stringify(this.currentCard);
-      console.log('reset end');
-    }
-
-
-    // EVENTS 
-    cardReset.addEventListener('click', ()=>{
-      resetCard.bind(_CHEZY);
+    cardReset.addEventListener('click', () => {
+      resetCard(_CHEZY);
+    });
+    gameReset.addEventListener('click', function(){
+      resetGame(_CHEZY);
     });
 
+
+
+    
   </script>
 </body>
 
