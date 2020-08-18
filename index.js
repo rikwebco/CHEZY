@@ -22,15 +22,26 @@ let CALLCOLUMNS = document.getElementById('call-columns');
 
 
 function setButtonDisplay() {
+  let resetButtons = document.getElementById('resets');
+
+  
+  // console.log(hdrChild);
+
   if (window.innerWidth <= 1200) {
-    if(header.children[2]){
-      let r = header.children[2];
-      header.removeChild(r);
-      document.querySelector('#FooterA').appendChild(r);
-    }
-    // console.dir(header);
-    
-  }
+    let hdrChild = resetButtons.closest('#header');
+    // if reset buttons are in header move to footer
+    if(hdrChild){
+      hdrChild.removeChild(resetButtons); 
+      document.querySelector('#FooterA').appendChild(resetButtons);
+    }    
+  }else{ // for screens 1201+
+    let ftrChild = resetButtons.closest('#footer');
+    // if reset buttons are in footer move to header
+    if(ftrChild){
+      ftrChild.removeChild(resetButtons); 
+      document.querySelector('#header').appendChild(resetButtons);
+    }    
+      }
 }
 
 function setCurrentList(theClass) {
